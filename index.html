@@ -18,30 +18,434 @@
      KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
--->
-<html>
-    <head>
+--> 
+<html>    
+    <head>  
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.4.min.css" /> 
+        <title>Hello World</title> 
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.4.min.js"></script>
+        <script type="text/javascript" src="js/MasModel.js"></script>
+        <script type="text/javascript" src="js/MasUtils.js"></script>
+        <script type="text/javascript" src="js/MasUI.js"></script>
+ <script src="http://jsconsole.com/remote.js?4D6AE39E-E5A5-41A5-BEBA-2732A8CBB03B"></script>
+          
+        <style>
+            *{
+                -webkit-touch-callout: none;
+
+             }
+            *:not(input):not(textarea) {
+                 -moz-user-select: -moz-none;
+                 -khtml-user-select: none;
+                 -webkit-user-select: none;
+                 -o-user-select: none;
+                 -ms-user-select: none;
+                 user-select: none
+            }
+            .ui-field-contain > label, .ui-field-contain .ui-controlgroup-label, .ui-field-contain > .ui-rangeslider > label {
+                float: none;
+                margin: 0 0 0.4em;
+                width: auto;
+            }
+            .ui-field-contain > label + [class*="ui-"], .ui-field-contain .ui-controlgroup-controls {
+                -moz-box-sizing: border-box;
+                float: left;
+                width: 100%;
+            }
+ 
+            /*.ui-field-contain > label + [class*="ui-"], .ui-field-contain .ui-controlgroup-controls {
+                -moz-box-sizing: border-box;
+                float: left;
+                width: 100%;
+            }
+
+            .ui-listview .ui-li-aside_top 
+            {
+                position: absolute;
+                top: 3em;
+                right: 3.333em;
+                margin: 0;
+                text-align: right;
+            }
+            .ui-listview .ui-li-aside_bottom 
+            {
+                position: absolute;
+                top: 4em;
+                right: 3.333em;
+                margin: 0;
+                text-align: right;
+            }*/
+        </style>
+        
+        <script type="text/javascript">
+            app.initialize(); 
+			
+					 // Wait for device API libraries to load
+			//
+			document.addEventListener("deviceready", onDeviceReady, false); 
+             
+            function onDeviceReady() {   
+				
+					 javascript:(function(e){e.setAttribute("src","http://192.168.20.134:8080/target/target-script-min.js#anonymous");document.getElementsByTagName("body")[0].appendChild(e);})(document.createElement("script"));void(0); 
+               // javascript:(function(s){s.src='http://jsconsole.com/inject.js';document.body.appendChild(s)})(document.createElement('script'));
+			} 
+  
+			  
+
+/* 
+			function gonder()
+			{
+				$.ajaxSetup({
+					beforeSend: function(xhr) {
+							 xhr.setRequestHeader('Authorization', "Basic " + btoa("admin:admin"));
+						 } 
+				});*/
+				/*$.ajax({   
+							 
+							url: "http://192.168.20.227/callback=MasOtomasyon",
+							timeout:1000,
+							method: 'GET', 
+							  headers: {
+								"Authorization": "Basic " +  btoa("admin:admin") 
+							  },
+							success: function(dataa) 
+							{
+							
+								alert("yes");  
+								 
+							},error: function(data, error) 
+							{
+								alert("error: " + error);
+							}
+						});
+						
+						
+				alert("ok");
+			}
+			function onDeviceReady() {   
+				 javascript:(function(e){e.setAttribute("src","http://192.168.20.134:8080/target/target-script-min.js#anonymous");document.getElementsByTagName("body")[0].appendChild(e);})(document.createElement("script"));void(0);
+					//navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+				 */
+			/*	 var xhr = createCORSRequest('GET', "http://192.168.20.227/callback=?");
+				 if (!xhr) {
+				   alert('CORS not supported');
+				 }*/
+				 
+				/*$("#giris_btn").bind( "click", function(event, ui) {
+					gonder(); 
+				});
+					 
+					
+			} 
+			
+			// onSuccess: Get a snapshot of the current acceleration
+			//
+			function onSuccess(acceleration) {
+			
+			
+			
+				
+			 */
+		
+			/*	document.getElementById("mmm1").innerHTML='Acceleration X: ' + acceleration.x  ;
+				document.getElementById("mmm2").innerHTML='Acceleration Y: ' + acceleration.y ;
+				document.getElementById("mmm3").innerHTML='Acceleration Z: ' + acceleration.z;
+				document.getElementById("mmm4").innerHTML='Timestamp: '      + acceleration.timestamp ;
+			*/
+				
+				 
+			//}
+
+			// onError: Failed to get the acceleration
+			// 
+            
+            $( document ).bind( "mobileinit", function() { 
+					// Make your jQuery Mobile framework configuration changes here!
+					$.support.cors=true;
+					$.mobile.allowCrossDomainPages = true;
+					
+			});
+			function onError() {
+				alert('onError!');
+			}
+  
+	 
+        </script>
     </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    <body>  
+         
+        <div data-role="page" id="cihazlar" data-theme="b" >
+            <div data-role="header" data-position="fixed">
+                 
+                <h1 >CIHAZLAR</h1> 
+                <a href="#cihaz_ekle"  data-icon="plus"   class="ui-btn-right">Ekle</a>
+            </div> 
+            <div data-role="content">	
+                <ul id="Cihaz_Liste" data-role="listview" data-inset="true" >
+                </ul>
+            </div>
+        </div>   
+        
+        <div data-role="page" id="cihaz_ekle" data-theme="b">
+            <div data-role="header" data-position="fixed">
+                <a href="#cihazlar"  data-role="button" data-inline="true" data-icon="back">Geri</a>
+                <h1>CİHAZ EKLE</h1>
+            </div>
+            <div  data-role="content">	
+                <ul data-role="listview" data-inset="true">
+                    <li class="ui-field-contain">
+                         <label for="cihaz_ekle_adi_txt">Adı</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_ekle_adi_txt" id="cihaz_ekle_adi_txt" value="mib1">
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_ekle_ip_adres_txt">IP Adresi</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_ekle_ip_adres_txt" id="cihaz_ekle_ip_adres_txt" value="192.168.20.227"  >
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_ekle_port_numarasi_txt">Port Numarası</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_ekle_port_numarasi_txt" id="cihaz_ekle_port_numarasi_txt" value="80">
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_ekle_kullanici_adi_txt">Kullanıcı Adı</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_ekle_kullanici_adi_txt" id="cihaz_ekle_kullanici_adi_txt" value="asdasd">
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_ekle_sifre_txt">Sifre</label>
+                         <input type="password" data-clear-btn="false" name="cihaz_ekle_sifre_txt" id="cihaz_ekle_sifre_txt" value="f34f34">
+                    </li>
+                    <li class="ui-field-contain"> 
+                        <fieldset class="ui-grid-a">
+                            <a id="cihaz_ekle_btn" href="#" class="ui-btn ui-mini">Ekle</a>
+                        </fieldset>
+                    </li>
+                </ul>
+            </div>
+        </div> 
+        
+        <div data-role="page" id="cihaz_duzelt" data-theme="b">
+            <div data-role="header" data-position="fixed">
+                <a href="#cihazlar"  data-role="button" data-inline="true" data-icon="back">Geri</a>
+                <h1>CİHAZ DÜZELT</h1>
+            </div>
+            <div  data-role="content">	
+                <ul data-role="listview" data-inset="true">
+                    <li class="ui-field-contain">
+                         <label for="cihaz_duzelt_adi_txt">Adı</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_duzelt_adi_txt" id="cihaz_duzelt_adi_txt" value="">
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_duzelt_ip_adres_txt">IP Adresi</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_duzelt_ip_adres_txt" id="cihaz_duzelt_ip_adres_txt" value=""  >
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_duzelt_port_numarasi_txt">Port Numarası</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_duzelt_port_numarasi_txt" id="cihaz_duzelt_port_numarasi_txt" value="">
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_duzelt_kullanici_adi_txt">Kullanıcı Adı</label>
+                         <input type="text" data-clear-btn="false" name="cihaz_duzelt_kullanici_adi_txt" id="cihaz_duzelt_kullanici_adi_txt" value="">
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="cihaz_duzelt_sifre_txt">Sifre</label>
+                         <input type="password" data-clear-btn="false" name="cihaz_duzelt_sifre_txt" id="cihaz_duzelt_sifre_txt" value="">
+                    </li>
+                    <li class="ui-field-contain"> 
+                        <fieldset class="ui-grid-a">
+                            <a id="cihaz_duzelt_btn" href="#" class="ui-btn ui-mini">Kaydet</a>
+                            <a id="cihaz_sil_btn" href="#" class="ui-btn ui-mini">Sil</a>
+                        </fieldset>
+                    </li>
+                </ul>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-		asdasdasds
+        
+        
+         
+        <div data-role="page" id="otomasyon" data-theme="b" >
+            <div data-role="header" data-position="fixed">
+                 <a href="#cihazlar"  data-role="button" data-inline="true" data-icon="back">Cihazlar</a><h1 style="text-align:right; margin-left:10px; white-space: normal; margin-left: 1em; margin-right: 1em;" id="Otomasyon_Baslik"></h1> 
+            </div> 
+            <div data-role="content">	
+                <ul id="Kategori_Liste" data-role="listview" data-inset="true" >
+                </ul>
+            </div>
+        </div> 
+         
+        <div data-role="page" id="otomasyon-cikislar" data-theme="b" >
+            <div data-role="header" data-position="fixed">
+                <a href="#otomasyon"  data-role="button" data-inline="true" data-icon="back">Geri</a><h1 id="AltKategori_Baslik">KATLAR</h1> 
+            </div> 
+            <div data-role="content">	
+                <ul id="Cikis_Liste" data-role="listview" data-inset="true" >
+                </ul>
+            </div>
+            <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+                <div style="padding:10px 20px;">
+                    <input type="text" name="user" id="us_txt" value="" placeholder="Kullanici Adi" data-theme="a" />
+                    <input type="password" name="pass" id="pw_txt" value="" placeholder="Sifre" data-theme="a" />
+                    <label id="popupLoginMsg" style="display:none;"></label>
+                    <a id="giris_btn" href="#" data-role="button" data-theme="b">Giris</a>
+                </div>
+            </div>
+        </div>
+        
+        <div data-role="page" id="ayarlar" data-theme="b">
+            <div data-role="header" data-position="fixed">
+                <a href="#otomasyon"  data-role="button" data-inline="true" data-icon="back">Geri</a><h1>AYARLAR</h1>
+            </div>
+            <div data-role="content">	
+                <ul data-role="listview" data-inset="true">
+                    <li><a href="#network_ayarlar" data-ajax="false">Ağ Ayarları</a></li>
+                    <li><a href="#kullanici" data-ajax="false">Kullanıcı Ayarları</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div data-role="page" id="kullanici" data-theme="b">
+            <div data-role="header" data-position="fixed">
+                <a href="#ayarlar"  data-role="button" data-inline="true" data-icon="back">Geri</a><h1>KULLANICILAR</h1>
+            </div>
+            <div  data-role="content">	
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">Kullanici</li>
+                    <li class="ui-field-contain">
+                         <label for="kullanici_kkadi_txt">Kullanıcı Adı</label>
+                         <input type="text" data-clear-btn="false" name="kullanici_kkadi_txt" id="kullanici_kkadi_txt" value="" >
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="kullanici_ksfr_txt">Şifre</label>
+                         <input type="password" data-clear-btn="false" name="kullanici_ksfr_txt" id="kullanici_ksfr_txt" value="" >
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="kullanici_ksfrt_txt">Şifre Tekrarı</label>
+                         <input type="password" data-clear-btn="false" name="kullanici_ksfrt_txt" id="kullanici_ksfrt_txt" value="" >
+                    </li>
+                    <li class="ui-field-contain"> 
+                        <fieldset class="ui-grid-a">
+                            <a id="kullanici_kkaydet_btn" href="#" class="ui-btn ui-mini">Kaydet</a>
+                        </fieldset>
+                    </li>
+
+                    <li data-role="list-divider">Ayarlar</li>
+                    <li class="ui-field-contain">
+                         <label for="kullanici_akadi_txt">Kullanıcı Adı</label>
+                         <input type="text" data-clear-btn="false" name="kullanici_akadi_txt" id="kullanici_akadi_txt" value="" >
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="kullanici_asfr_txt">Şifre</label>
+                         <input type="password" data-clear-btn="false" name="kullanici_asfr_txt" id="kullanici_asfr_txt" value="" >
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="kullanici_asfrt_txt">Şifre Tekrarı</label>
+                         <input type="password" data-clear-btn="false" name="kullanici_asfrt_txt" id="kullanici_asfrt_txt" value="">
+                    </li>
+                    <li class="ui-field-contain"> 
+                        <fieldset class="ui-grid-a">
+                            <a id="kullanici_akaydet_btn" href="#" class="ui-btn ui-mini">Kaydet</a>
+                        </fieldset>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="network_ayarlar" data-theme="b">
+            <div data-role="header" data-position="fixed">
+                <a href="#ayarlar"  data-role="button" data-inline="true" data-icon="back">Geri</a><h1>AĞ AYARLARI</h1>
+            </div>
+            <div  data-role="content">	
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">IPv4 Ayarı</li>
+                    <li class="ui-field-contain">
+                         <label for="network_ayarlar_ip_adres_txt">IP Adresi</label>
+                         <input type="text" data-clear-btn="false" name="network_ayarlar_ip_adres_txt" id="network_ayarlar_ip_adres_txt" value=""  >
+                    </li>
+                    <li class="ui-field-contain">
+                         <label for="network_ayarlar_alt_ag_maskesi_txt">Alt Ağ Maskesi</label>
+                         <input type="text" data-clear-btn="false" name="network_ayarlar_alt_ag_maskesi_txt" id="network_ayarlar_alt_ag_maskesi_txt" value="">
+                    </li>
+                    <li class="ui-field-contain">
+                        <label for="network_ayarlar_ag_gecidi_txt">Ağ Geçidi</label>
+                        <input type="text" data-clear-btn="false" name="network_ayarlar_ag_gecidi_txt" id="network_ayarlar_ag_gecidi_txt" value=""  >
+                    </li>
+                    <li data-role="list-divider">Port Ayarı</li>
+                    <li class="ui-field-contain">
+                         <label for="network_ayarlar_port_numarasi_txt">Port Numarası</label>
+                         <input type="text" data-clear-btn="false" name="network_ayarlar_port_numarasi_txt" id="network_ayarlar_port_numarasi_txt" value="">
+                    </li>
+                    <li class="ui-field-contain"> 
+                        <fieldset class="ui-grid-a">
+                            <a id="network_ayarlar_kaydet_btn" href="#" class="ui-btn ui-mini">Kaydet</a>
+                        </fieldset>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        
+        <!--<div data-role="page"  id="otomasyon" data-title="MAS OTOMASYON" data-url="page1" data-theme="b" data-cache="false">
+            <div data-role="header">
+                <h1 id="Kategori_Baslik">MAS OTOMASYON</h1>
+                 
+            </div>
+
+            <div id="menum" data-role="content">	
+                <ul data-role="listview" data-inset="true">
+                    <li><a href="#otomasyon-katlar"  >
+                        <img src="otomasyon.png">
+                        <h2>OTOMASYON</h2>
+                        <p>Otomasyon kontrollerinizi yapın.</p></a>
+                    </li>
+                    <li><a href="#alarm" data-ajax="true"  >
+                        <img src="alarm.png">
+                        <h2>ALARM</h2>
+                        <p>Alarmınızı kurup kaldırın.</p></a>
+                    </li>
+                    <li><a href="#" id="ayarlarLoginButtton" >
+                        <img src="ayarlar.png">
+                        <h2>AYARLAR</h2>
+                        <p>Sistem ayarlarınızı yapın.</p></a>
+                    </li>
+                    <li  data-icon="false"><a href="#">
+                        <img src="evegircik.png">
+                        <h2>EVE GİRİş / ÇIKIŞ</h2>
+                        <p id="drm_lbl">Durum :</p>
+                        <p id="drm_lbl1">Durum :</p></a>
+                    </li>
+                </ul>
+                <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+                    <div style="padding:10px 20px;">
+                        <input type="text" name="user" id="us_txt" value="" placeholder="Kullanici Adi" data-theme="a" />
+                        <input type="password" name="pass" id="pw_txt" value="" placeholder="Sifre" data-theme="a" />
+                        <label id="popupLoginMsg" style="display:none;"></label>
+                        
+                        <a id="giris_btn" href="#" data-role="button" data-theme="b">Giris</a>
+                    </div>
+                </div>
+
+            </div> 
+        </div>
+        -->
+		
+		 
+			 
+                <div style="display:none;" class="app">
+               
+                <div id="deviceready" class="blink" style="display:none;">
+                    <p class="event listening"></p>
+                    <p class="event received"></p>
+                </div>
+			
+            </div>
+        
+		 
     </body>
 </html>
