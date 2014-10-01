@@ -30,13 +30,17 @@ window.cOtomasyon.modul = (function () {
             },
             statusCode: {
                 200: function (response) {
+                    alert("200:" + response);
                     succ(true);
                 },
                 0: function (response) {
+                    alert("0:" + response);
                     succ(false);
                 }
             }
             });
+        
+        alert("1:");
     }
     
     AjaxProcces = (function () {
