@@ -24,7 +24,7 @@ window.cOtomasyon.modul = (function () {
     function CihazTest(cihaz, succ) {
         $.ajax({url: "http://" + cihaz.cihazIp + ":" + cihaz.cihazPort + "/",
             type: "GET",
-            timeout: 1000,
+            timeout: 5000,
             headers: {
                 "Authorization": "Basic " +  btoa(cihaz.cihazKullaniciAdi + ":" + cihaz.cihazSifre)
             },
