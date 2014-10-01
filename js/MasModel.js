@@ -165,8 +165,7 @@ window.cOtomasyon.modul = (function () {
             var CihazDataBase, tmpCihazlarStr;
             try {
                 tmpCihazlarStr = window.localStorage.getItem("cachedCihazlar");
-                //alert(tmpCihazlarStr);
-                if (tmpCihazlarStr !== "null") {
+                if (typeof tmpCihazlarStr !== typeof null) {
                     CihazDataBase = JSON.parse(tmpCihazlarStr);
                 } else {
                     CihazDataBase  = [];
@@ -174,6 +173,7 @@ window.cOtomasyon.modul = (function () {
             } catch (err) {
                 CihazDataBase = [];
             }
+            
             
             CihazDataBase.push({
                 cihazId : cihazId,
@@ -183,6 +183,7 @@ window.cOtomasyon.modul = (function () {
                 cihazKullaniciAdi : cihazKullaniciAdi,
                 cihazSifre : cihazSifre
             });
+         
 
             window.localStorage.setItem("cachedCihazlar", JSON.stringify(CihazDataBase));
         }
@@ -191,7 +192,7 @@ window.cOtomasyon.modul = (function () {
             var CihazDataBase, tmpCihazlarStr, tmpCihazIndex = null;
             try {
                 tmpCihazlarStr = window.localStorage.getItem("cachedCihazlar");
-                if (tmpCihazlarStr !== "null") {
+                if (typeof tmpCihazlarStr !== typeof null) {
                     CihazDataBase = JSON.parse(tmpCihazlarStr);
                     $.each(CihazDataBase, function (i, cihaz) {
                         if (cihaz !== null) {
@@ -215,7 +216,7 @@ window.cOtomasyon.modul = (function () {
             var CihazDataBase, tmpCihazlarStr;
             try {
                 tmpCihazlarStr = window.localStorage.getItem("cachedCihazlar");
-                if (tmpCihazlarStr !== "null") {
+                if (typeof tmpCihazlarStr !== typeof null) {
                     CihazDataBase = JSON.parse(tmpCihazlarStr);
                     $.each(CihazDataBase, function (i, cihaz) {
                         if (cihaz !== null) {
@@ -239,7 +240,7 @@ window.cOtomasyon.modul = (function () {
             var CihazDataBase, tmpCihazlarStr;
             try {
                 tmpCihazlarStr = window.localStorage.getItem("cachedCihazlar");
-                if (tmpCihazlarStr !== "null") {
+                if (typeof tmpCihazlarStr !== typeof null) {
                     CihazDataBase = JSON.parse(tmpCihazlarStr);
                     return CihazDataBase.length;
                 }
@@ -252,7 +253,7 @@ window.cOtomasyon.modul = (function () {
             var CihazDataBase, tmpCihazlarStr;
             try {
                 tmpCihazlarStr = window.localStorage.getItem("cachedCihazlar");
-                if (tmpCihazlarStr !== "null") {
+                if (typeof tmpCihazlarStr !== typeof null) {
                     CihazDataBase = JSON.parse(tmpCihazlarStr);
                 } else {
                     CihazDataBase = null;
@@ -270,7 +271,7 @@ window.cOtomasyon.modul = (function () {
             try {
                 tmpCihazlarStr = window.localStorage.getItem("cachedCihazlar");
                 retCihaz = null;
-                if (tmpCihazlarStr !== "null") {
+                if (typeof tmpCihazlarStr !== typeof null) {
                     CihazDataBase = JSON.parse(tmpCihazlarStr);
                     $.each(CihazDataBase, function (i, cihaz) {
                         if (cihaz !== null) {
@@ -291,7 +292,7 @@ window.cOtomasyon.modul = (function () {
             try {
                 tmpCihazlarStr = window.localStorage.getItem("cachedCihazlar");
                 retCihaz = null;
-                if (tmpCihazlarStr !== "null") {
+                if (typeof tmpCihazlarStr !== typeof null) {
                     CihazDataBase = JSON.parse(tmpCihazlarStr);
                     if (CihazDataBase.length > 0) {
                         if (index < CihazDataBase.length) {
