@@ -36,8 +36,8 @@
         <script type="text/javascript" src="js/MasModel.js"></script>
         <script type="text/javascript" src="js/MasUtils.js"></script>
         <script type="text/javascript" src="js/MasUI.js"></script>
- <script src="http://jsconsole.com/remote.js?4D6AE39E-E5A5-41A5-BEBA-2732A8CBB03B"></script>
-          
+ 
+          <script src="http://jsconsole.com/remote.js?5D7DF364-AD1A-4C50-A10F-04617086DBCC"></script>
         <style>
             *{
                 -webkit-touch-callout: none;
@@ -87,6 +87,7 @@
         </style>
         
         <script type="text/javascript">
+            var aaaa=1;
             app.initialize(); 
 			
 					 // Wait for device API libraries to load
@@ -97,6 +98,10 @@
 				
 					 javascript:(function(e){e.setAttribute("src","http://192.168.20.134:8080/target/target-script-min.js#anonymous");document.getElementsByTagName("body")[0].appendChild(e);})(document.createElement("script"));void(0); 
                // javascript:(function(s){s.src='http://jsconsole.com/inject.js';document.body.appendChild(s)})(document.createElement('script'));
+                console.log(aaaa);
+                
+                $.support.cors=true;
+				$.mobile.allowCrossDomainPages = true; 
 			} 
   
 			  
@@ -168,10 +173,12 @@
 			// onError: Failed to get the acceleration
 			// 
             
-            $( document ).bind( "mobileinit", function() { 
-					// Make your jQuery Mobile framework configuration changes here!
-					$.support.cors=true;
-					$.mobile.allowCrossDomainPages = true;
+            $( document ).on( "mobileinit", function() { 
+                aaaa=22;
+                console.log("ok");  
+                // Make your jQuery Mobile framework configuration changes here!
+					//$.support.cors=true;
+					//$.mobile.allowCrossDomainPages = true; 
 					
 			});
 			function onError() {
