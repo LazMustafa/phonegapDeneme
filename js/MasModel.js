@@ -24,23 +24,23 @@ window.cOtomasyon.modul = (function () {
     function CihazTest(cihaz, succ) {
         $.ajax({url: "http://" + cihaz.cihazIp + ":" + cihaz.cihazPort + "/",
             type: "GET",
-            timeout: 5000,
+            timeout: 1000,
             headers: {
                 "Authorization": "Basic " +  btoa(cihaz.cihazKullaniciAdi + ":" + cihaz.cihazSifre)
             },
             statusCode: {
                 200: function (response) {
-                    alert("200:" + response);
+                    //alert("200:" + response);
                     succ(true);
                 },
                 0: function (response) {
-                    alert("0:" + response);
+                    //alert("0:" + response);
                     succ(false);
                 }
             }
             });
         
-        alert("1:");
+        //alert("1:");
     }
     
     AjaxProcces = (function () {
