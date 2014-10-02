@@ -780,11 +780,11 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         }
 
         function PageInit() {
- 
             if (modul.Cihazlar.CihazSayisi() === 1) {
                 modul.Cihazlar.GetirIndex(0, function (retCihaz) {
                     if (retCihaz !== null) {
                         modul.Cihazlar.AktifCihazId = retCihaz.cihazId;
+                        sessionStorage.setItem("aktifCihazId", retCihaz.cihazId);
                         utils.pageChange("#otomasyon");
                     }
                 });
