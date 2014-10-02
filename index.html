@@ -25,8 +25,8 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" />-->
 		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.4.min.css" /> 
         <title>Hello World</title> 
 		<script type="text/javascript" src="cordova.js"></script>
@@ -36,8 +36,7 @@
         <script type="text/javascript" src="js/MasModel.js"></script>
         <script type="text/javascript" src="js/MasUtils.js"></script>
         <script type="text/javascript" src="js/MasUI.js"></script>
- 
-          <script src="http://jsconsole.com/remote.js?5D7DF364-AD1A-4C50-A10F-04617086DBCC"></script>
+         
         <style>
             *{
                 -webkit-touch-callout: none;
@@ -61,7 +60,25 @@
                 float: left;
                 width: 100%;
             }
- 
+           /* .ui-icon-unlockl
+            {
+                background: url('css/themes/default/images/icons-png/unlock-white.png') no-repeat rgba(0, 0, 0, 0.4) !important;
+                background-size: 14px 14px;
+            }*/
+            
+            .ui-icon-unlock:after {
+                background-image: url('css/themes/default/images/icons-svg/unlock-white.svg');
+            } 
+
+            /* Fallback */
+            .ui-nosvg .ui-icon-unlock:after {
+                background-image: url('css/themes/default/images/icons-png/unlock-white.png');
+            }
+
+            #otomasyon-cikislar .ui-listview > .ui-li-static {
+                padding: 0.2em 0.5em 0.2em 0.5em;
+            }
+            
             /*.ui-field-contain > label + [class*="ui-"], .ui-field-contain .ui-controlgroup-controls {
                 -moz-box-sizing: border-box;
                 float: left;
@@ -87,7 +104,6 @@
         </style>
         
         <script type="text/javascript">
-            var aaaa=1;
             app.initialize(); 
 			
 					 // Wait for device API libraries to load
@@ -95,92 +111,17 @@
 			document.addEventListener("deviceready", onDeviceReady, false); 
              
             function onDeviceReady() {   
-				
-					 javascript:(function(e){e.setAttribute("src","http://192.168.20.134:8080/target/target-script-min.js#anonymous");document.getElementsByTagName("body")[0].appendChild(e);})(document.createElement("script"));void(0); 
+				    
+                    alert("ok");
+					 /*javascript:(function(e){e.setAttribute("src","http://192.168.20.134:8080/target/target-script-min.js#anonymous");document.getElementsByTagName("body")[0].appendChild(e);})(document.createElement("script"));void(0); */
                // javascript:(function(s){s.src='http://jsconsole.com/inject.js';document.body.appendChild(s)})(document.createElement('script'));
-                console.log(aaaa);
+                 
                 
                 $.support.cors=true;
 				$.mobile.allowCrossDomainPages = true; 
 			} 
   
-			  
 
-/* 
-			function gonder()
-			{
-				$.ajaxSetup({
-					beforeSend: function(xhr) {
-							 xhr.setRequestHeader('Authorization', "Basic " + btoa("admin:admin"));
-						 } 
-				});*/
-				/*$.ajax({   
-							 
-							url: "http://192.168.20.227/callback=MasOtomasyon",
-							timeout:1000,
-							method: 'GET', 
-							  headers: {
-								"Authorization": "Basic " +  btoa("admin:admin") 
-							  },
-							success: function(dataa) 
-							{
-							
-								alert("yes");  
-								 
-							},error: function(data, error) 
-							{
-								alert("error: " + error);
-							}
-						});
-						
-						
-				alert("ok");
-			}
-			function onDeviceReady() {   
-				 javascript:(function(e){e.setAttribute("src","http://192.168.20.134:8080/target/target-script-min.js#anonymous");document.getElementsByTagName("body")[0].appendChild(e);})(document.createElement("script"));void(0);
-					//navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-				 */
-			/*	 var xhr = createCORSRequest('GET', "http://192.168.20.227/callback=?");
-				 if (!xhr) {
-				   alert('CORS not supported');
-				 }*/
-				 
-				/*$("#giris_btn").bind( "click", function(event, ui) {
-					gonder(); 
-				});
-					 
-					
-			} 
-			
-			// onSuccess: Get a snapshot of the current acceleration
-			//
-			function onSuccess(acceleration) {
-			
-			
-			
-				
-			 */
-		
-			/*	document.getElementById("mmm1").innerHTML='Acceleration X: ' + acceleration.x  ;
-				document.getElementById("mmm2").innerHTML='Acceleration Y: ' + acceleration.y ;
-				document.getElementById("mmm3").innerHTML='Acceleration Z: ' + acceleration.z;
-				document.getElementById("mmm4").innerHTML='Timestamp: '      + acceleration.timestamp ;
-			*/
-				
-				 
-			//}
-
-			// onError: Failed to get the acceleration
-			// 
-            
-            $( document ).on( "mobileinit", function() { 
-                aaaa=22;
-                console.log("ok");  
-                // Make your jQuery Mobile framework configuration changes here!
-					//$.support.cors=true;
-					//$.mobile.allowCrossDomainPages = true; 
-					
-			});
 			function onError() {
 				alert('onError!');
 			}
@@ -190,6 +131,17 @@
     </head>
     <body>  
          
+        <div data-role="page" class="app">
+            <div data-role="header" data-position="fixed">
+            </div>    
+            <div data-role="content">
+                <div id="deviceready" class="blink">
+                    <p class="event listening"></p>
+                    <p class="event received"></p>
+                </div>
+            </div>
+        </div>
+        
         <div data-role="page" id="cihazlar" data-theme="b" >
             <div data-role="header" data-position="fixed">
                  
@@ -395,63 +347,7 @@
                 </ul>
             </div>
         </div>
-        
-        
-        
-        <!--<div data-role="page"  id="otomasyon" data-title="MAS OTOMASYON" data-url="page1" data-theme="b" data-cache="false">
-            <div data-role="header">
-                <h1 id="Kategori_Baslik">MAS OTOMASYON</h1>
-                 
-            </div>
 
-            <div id="menum" data-role="content">	
-                <ul data-role="listview" data-inset="true">
-                    <li><a href="#otomasyon-katlar"  >
-                        <img src="otomasyon.png">
-                        <h2>OTOMASYON</h2>
-                        <p>Otomasyon kontrollerinizi yapın.</p></a>
-                    </li>
-                    <li><a href="#alarm" data-ajax="true"  >
-                        <img src="alarm.png">
-                        <h2>ALARM</h2>
-                        <p>Alarmınızı kurup kaldırın.</p></a>
-                    </li>
-                    <li><a href="#" id="ayarlarLoginButtton" >
-                        <img src="ayarlar.png">
-                        <h2>AYARLAR</h2>
-                        <p>Sistem ayarlarınızı yapın.</p></a>
-                    </li>
-                    <li  data-icon="false"><a href="#">
-                        <img src="evegircik.png">
-                        <h2>EVE GİRİş / ÇIKIŞ</h2>
-                        <p id="drm_lbl">Durum :</p>
-                        <p id="drm_lbl1">Durum :</p></a>
-                    </li>
-                </ul>
-                <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
-                    <div style="padding:10px 20px;">
-                        <input type="text" name="user" id="us_txt" value="" placeholder="Kullanici Adi" data-theme="a" />
-                        <input type="password" name="pass" id="pw_txt" value="" placeholder="Sifre" data-theme="a" />
-                        <label id="popupLoginMsg" style="display:none;"></label>
-                        
-                        <a id="giris_btn" href="#" data-role="button" data-theme="b">Giris</a>
-                    </div>
-                </div>
-
-            </div> 
-        </div>
-        -->
-		
-		 
-			 
-                <div style="display:none;" class="app">
-               
-                <div id="deviceready" class="blink" style="display:none;">
-                    <p class="event listening"></p>
-                    <p class="event received"></p>
-                </div>
-			
-            </div>
         
 		 
     </body>

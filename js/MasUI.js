@@ -15,24 +15,6 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
     // >------- MESSAGE --- BOX ------>
    
     function showYesNoMsg(popupHeader, msgHead, msg, succ) {
-       
-        
-        /*
-        <div class="ui-popup-screen ui-overlay-b in"></div>
-        <div class="ui-popup-container ui-popup-active" tabindex="0" style="max-width: 1694px; top: 47px; left: 705.5px;">
-            <div data-role="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;" class="ui-popup ui-body-b ui-overlay-shadow ui-corner-all">
-                <div data-role="header" data-theme="a" role="banner" class="ui-header ui-bar-a">
-                    <h1 class="ui-title" role="heading" aria-level="1">ALARM</h1>
-                </div>
-                <div role="main" class="ui-content">
-                    <h4>Sistem Reset</h4>
-                    <h5 class="ui-title">Tüm kontrollerinizi yaptığınıza eminmisiniz?</h5>
-                    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">İptal</a>
-                    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-transition="flow">Tamam</a>
-                </div>
-            </div>
-        </div>
-        */
         var $pdiv = $("<div>", {
             "data-role" : "popup",
             "data-overlay-theme" : "b",
@@ -70,10 +52,6 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         $pcontentdiv.append($pyesbtn);
         $pdiv.append($pcontentdiv);
         
-        // page.children("[data-role=content]").append(pdiv);
-       // $.mobile.activePage.children("[data-role=content]").append($pdiv);
-        
-        
         $pdiv.popup({
             afterclose: function (event, ui) {
                 $(this).remove();
@@ -93,137 +71,6 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
        
         $pdiv.trigger("create");
         $pdiv.popup('open');
-    }
-    /*
-        <div data-role="popup" id="Alarm_Aktif_pop" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-            <div data-role="header" data-theme="a">
-                <h1 >Alarm Algılandı</h1>
-            </div>
-            <div role="main" class="ui-content">
-                <h3 class="ui-title">Alarm Durumu:</h3>
-                <p id="Alarm_Aktif_pop_durum_lbl"></p>
-                <a id="Alarm_Kaldir_btn" href="" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"  >Alarm Kaldır</a>
-            </div>
-        </div>
-    
-    */
-    function alarmMsg(alarmKod, succ) {
-        var alarmMesaj = "", alarmKodInt, $contentHeader, $contentMain, $popupdiv, $contentalarm, $contentalarmkaldirbtn, $contentalarmgizlebtn;
-        alarmKodInt = parseInt(alarmKod, 10);
-        
-        if ((alarmKodInt & 0X20) !== 0) {
-            alarmMesaj += "GAZ ALGILANDI<br/>";
-        }
-        if ((alarmKodInt & 0X10) !== 0) {
-            alarmMesaj += "SU ALGILANDI<br/>";
-        }
-        if ((alarmKodInt & 0X08) !== 0) {
-            alarmMesaj += "PANİK ALGILANDI<br/>";
-        }
-        if ((alarmKodInt & 0X04) !== 0) {
-            alarmMesaj += "DUMAN ALGILANDI<br/>";
-        }
-        if ((alarmKodInt & 0X02) !== 0) {
-            alarmMesaj += "REED KONTAK ALGILANDI<br/>";
-        }
-        if ((alarmKodInt & 0X01) !== 0) {
-            alarmMesaj += "HAREKET ALGILANDI<br/>";
-        }
-        
-        if (!$("#AlarmAlgilandipop").parent().hasClass("ui-popup-active")) {
-            console.log(alarmMesaj);
-            
-            $contentHeader = $("<div/>", {
-                "data-role" : "header",
-                "data-theme" : "a",
-                "html" : "<h1>Alarm Algılandı</h1>"
-            });
-            
-            $contentMain = $("<div/>", {
-                "role" : "main",
-                "class" : "ui-content",
-                "html": "<h3 class=\"ui-title\">Alarm Durumu:</h3>"
-            });
-            
-            $popupdiv = $("<div/>", {
-                "data-role" : "popup",
-                "id" : "AlarmAlgilandipop",
-                "data-overlay-theme" : "b",
-                "data-theme" : "b",
-                "data-dismissible" : "false",
-                "style" : "max-width:400px;"
-            });
-            
-            $contentalarm = $("<p>", {
-                "id" : "alarmMesajLbl",
-                "html" : alarmMesaj
-            });
-            
-           /* $contentalarmkaldirbtn = $("<a/>", {
-                "href" : "",
-                "class" : "ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b",
-                "html" : "Alarm Kaldır"
-            });*/
-            
-            $contentalarmgizlebtn = $("<a/>", {
-                "href" : "",
-                "class" : "ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b",
-                "html" : "Kapat"
-            });
-
-            //$contentalarm.html(msg);
-            
-      
-            
-            $contentMain.append($contentalarm);
-            //$contentMain.append($contentalarmkaldirbtn);
-            $contentMain.append($contentalarmgizlebtn);
-            
-            $contentHeader.appendTo($popupdiv);
-            $contentMain.appendTo($popupdiv);
-            //$.mobile.activePage.children("[data-role=content]").append(popupdiv);
-
-            
-
-            $popupdiv.popup({
-                afterclose: function (event, ui) {
-                     
-                    $(this).remove();
-                    $popupdiv = null;
-                },
-                afteropen: function (event, ui) {
-                    /*if (timeout !== null) {
-                        setTimeout(function () {
-                            if (popupdiv !== null) {
-                                popupdiv.popup('close');
-                                if (succ instanceof Function) {
-                                    succ();
-                                }
-                            }
-                        }, timeout);
-                    }*/
-                }
-            });
-            
-            
-        
-            /*$contentalarmkaldirbtn.on('click', function () {
-                $popupdiv.popup('close');
-            });*/
-
-
-
-            $contentalarmgizlebtn.on('click', function () {
-                modul.StmAyar.AlarmDurum.MesajGoster = 0;
-                $popupdiv.popup('close');
-            });
-            
-            $popupdiv.trigger('create');
-            $popupdiv.popup('open');
-        } else {
-            console.log("acik");
-            $("#alarmMesajLbl").html(alarmMesaj);
-        }
     }
     
     function showMsg(msg, timeout, succ) {
@@ -328,35 +175,6 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         }
         function PageInit() {
 
-            
-            
-            
-            /*$('#ayarlarLoginButtton').on('click', function () {
-                $('#popupLogin').popup('open');
-            });
-
-            $('#popupLogin').on('popupafteropen', function () {
-
-                //$('#giris_btn').button( "option", "disabled", false );
-                $('#giris_btn').removeClass('ui-disabled');
-                $("#popupLoginMsg").hide();
-                $("#us_txt").val("");
-                $("#pw_txt").val("");
-
-                $("#us_txt").focus();
-            });
-
-            $('#giris_btn').on('click', function () {
-                ayarlarLogin($("#us_txt").val(), $("#pw_txt").val());
-            });
-
-            $("#us_txt,#pw_txt").keyup(function (event) {
-                if (event.keyCode === 13) {
-                    $("#giris_btn").click();
-                }
-            });
-
-            console.log("otomasyon page init");*/
         }
         
         function PageBeforeShow() {
@@ -380,19 +198,6 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
                     }
                 });
             }
-            /*setTimeout(function () {
-                modul.Cihazlar.AktifCihazId = sessionStorage.getItem("aktifCihazId");
-                if (modul.Cihazlar.AktifCihazId !== null) {
-                    //alert("ok");
-                    modul.Cihazlar.Getir(modul.Cihazlar.AktifCihazId, function (retCihaz) {
-                        if (retCihaz !== null) {
-                            modul.CihazSec(retCihaz);
-                        }
-                    });
-                }
-                katergoriListele();
-            }, 1000);*/
-
         }
         
         function PageShow() {
@@ -481,10 +286,19 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         
         function lstItemAdd($HederItemUl, cikis) {
          
-            var $cikisLi, $cikisDiv, $cikisLabel, $cikisSelect, $cikisInput, $cikisPanjurYukariA, $cikisPanjurAsagiA, $tmpControlDiv, $tmpLabelDiv;
+            var $cikisLi, $cikisDiv, $cikisLabel, $cikisSelect, $cikisInput, $cikisPanjurYukariA, $cikisPanjurAsagiA, $tmpControlDiv, $tmpLabelDiv, btnHtml, btnIconSol, btnIconSag;
             
-            switch (cikis.Tipi) {
-            case "1": // KONTAK
+            /*
+                "1": // KONTAK -
+                "2": // DIMMER -
+                "3": // PANJUR -
+                "4": // DİMMER BUTON -
+                "5": // BUTON 
+                "6": // BUTTON 2 Lİ kilit aç kapat-
+                "7": // BUTTON 2 Lİ +- -
+                "8": // BUTTON 1 Lİ senaryo -
+            */
+            if (cikis.Tipi === "1") {
                 $cikisLi = $("<li>", {
                     "data-role" : "fieldcontain",
                     "data-icon" : "false"
@@ -511,10 +325,20 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
                     "html" : "<option value=\"0\">Off</option><option value=\"1\">On</option>"
                 });
                     
+                $tmpControlDiv.append($cikisSelect);
+                $tmpLabelDiv.append($cikisLabel);
+                    
+                
+                
+                $cikisLi.append($tmpControlDiv);
+                $cikisLi.append($tmpLabelDiv);
+                    
                 
                  
                 $cikisSelect.val(cikis.Degeri);
-                    
+                
+                $cikisSelect.flipswitch();
+                
                 $cikisSelect.on('change', function (event) {
                     var objt_tmp = $(this);
                     
@@ -522,24 +346,90 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
                     
                     modul.Otomasyon.CikisSet($(this).attr("RoleID"), objt_tmp.val(), function (retVal) {
                         if (objt_tmp.val().toString() !== retVal.Degeri.toString()) {
-                            alert(retVal.Degeri);
+                            //alert(retVal.Degeri);
                             objt_tmp.val(retVal.Degeri);
                         }
                     });
                 });
                     
-                $tmpControlDiv.append($cikisSelect);
-                $tmpLabelDiv.append($cikisLabel);
-                    
-                $cikisLi.append($tmpControlDiv);
-                $cikisLi.append($tmpLabelDiv);
-                    
                 $HederItemUl.append($cikisLi);
-                break;
-            case "2": // DIMMER
-                break;
-            case "3":  // PANJUR - DİMMER BUTON
-            case "4":
+            } else if (cikis.Tipi === "2") {
+                
+                $cikisLi = $("<li>", {
+                    "data-role" : "fieldcontain",
+                    "data-icon" : "false"
+                });
+                    
+                $cikisLabel = $("<label>", {
+                    "for" : "slider-" + cikis.RoleId,
+                    "style" : "white-space:normal;",
+                    "html" : cikis.Adi
+                });
+                
+                $cikisInput = $("<input>", {
+                    "type" : "number",
+                    "data-type" : "range",
+                    "name" : "slider-" + cikis.RoleId,
+                    "id" : "slider-" + cikis.RoleId,
+                    "data-highlight" : "true",
+                    "data-show-value" : "true",
+                    //"data-popup-enabled" : "true",
+                    //"data-mini" : "true", 
+                    "min" : "0",
+                    "max" : "100",
+                    "value" : cikis.Degeri
+                });
+                
+                /*$cikisInput.slider({
+                    stop: function (event, ui) { alert("objt_tmp.val()"); }
+                });*/
+                
+                 
+                $cikisLi.append($cikisLabel);
+                $cikisLi.append($cikisInput);
+                $HederItemUl.append($cikisLi);
+                
+                $cikisInput.slider().textinput();
+                
+                $cikisInput.on('slidestop', function (event) {
+                    var objt_tmp = $(this);
+                    //console.log("ok");
+                    //alert(objt_tmp.val());
+                    startTimer();
+                    
+                    modul.Otomasyon.CikisSet($(this).attr("RoleID"), objt_tmp.val(), function (retVal) {
+                        if (objt_tmp.val().toString() !== retVal.Degeri.toString()) {
+                            //alert(retVal.Degeri);
+                            objt_tmp.val(retVal.Degeri);
+                        }
+                    });
+                });
+                
+                
+            
+            } else if ((cikis.Tipi === "3") || (cikis.Tipi === "4") || (cikis.Tipi === "6") || (cikis.Tipi === "7") || (cikis.Tipi === "8")) {
+            
+                if ((cikis.Tipi === "3") || (cikis.Tipi === "4")) {
+                    btnIconSol = "ui-icon-arrow-u";
+                    btnIconSag = "ui-icon-arrow-d";
+                } else if (cikis.Tipi === "6") {
+                    btnIconSol = "ui-icon-unlock";
+                    btnIconSag = "ui-icon-lock";
+                } else if (cikis.Tipi === "7") {
+                    btnIconSol = "ui-icon-minus";
+                    btnIconSag = "ui-icon-plus";
+                } else if (cikis.Tipi === "8") {
+                    btnIconSol = "ui-icon-eye";
+                    btnIconSag = "";
+                }
+                
+                if (cikis.Tipi === "8") {
+                    btnHtml = "<a degeri=\"1\" class=\"ui-btn ui-corner-all " + btnIconSol + " ui-btn-icon-notext \">Y</a>";
+                } else {
+                    btnHtml = "<a degeri=\"1\" class=\"ui-btn ui-corner-all " + btnIconSol + " ui-btn-icon-notext \">Y</a><a degeri=\"2\" class=\"ui-btn ui-corner-all " + btnIconSag + " ui-btn-icon-notext\">A</a>";
+                }
+                    
+                
                 $cikisLi = $("<li>", {
                     "data-role" : "fieldcontain",
                     "data-icon" : "false"
@@ -561,38 +451,35 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
                     "data-role" : "controlgroup",
                     "data-type" : "horizontal",
                     //"data-mini" : "true",
-                    "html" : "<a degeri=\"1\" class=\"ui-btn ui-corner-all ui-icon-arrow-u ui-btn-icon-notext \">Y</a><a degeri=\"2\" class=\"ui-btn ui-corner-all ui-icon-arrow-d ui-btn-icon-notext\">A</a>"
+                    "html" : btnHtml
                 });
-                    
-                $cikisDiv.find("a").on('vmousedown', function () {
-                    
-                    startTimer();
-                    modul.Otomasyon.CikisSet($(this).parent().parent().attr("RoleID"), $(this).attr("degeri"), function (retVal) { });
-                });
-
-                $cikisDiv.find("a").on('vmouseup', function () {
-                    
-                    startTimer();
-                    modul.Otomasyon.CikisSet($(this).parent().parent().attr("RoleID"), 0, function (retVal) { });
-                });
-                    
+                
+                
                 $tmpControlDiv.append($cikisDiv);
                 $tmpLabelDiv.append($cikisLabel);
-                    
+
                 $cikisLi.append($tmpControlDiv);
                 $cikisLi.append($tmpLabelDiv);
                 
-                $HederItemUl.append($cikisLi);
-                break;
-            case "5": // BUTON
-                break;
-            case "6": // BUTTON 2 Lİ kilit aç kapat
-                break;
-            case "7": // BUTTON 2 Lİ +-
-                break;
-            case "8": // BUTTON 1 Lİ senaryo
-                break;
+                
+                $cikisDiv.controlgroup();
+                
+                //if ((cikis.Tipi === "3") || (cikis.Tipi === "4") || (cikis.Tipi === "6") || (cikis.Tipi === "7") || (cikis.Tipi === "8")) {
+                $cikisDiv.find("a").on('vmousedown', function () {
 
+                    startTimer();
+                    modul.Otomasyon.CikisSet($(this).parent().parent().attr("RoleID"), $(this).attr("degeri"), function (retVal) { });
+                });
+                //}
+                if ((cikis.Tipi !== "7")) {
+                    $cikisDiv.find("a").on('vmouseup', function () {
+
+                        startTimer();
+                        modul.Otomasyon.CikisSet($(this).parent().parent().attr("RoleID"), 0, function (retVal) { });
+                    });
+                }
+                
+                $HederItemUl.append($cikisLi);
             }
         }
         
@@ -608,7 +495,7 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
                     }
                 });
                 $tmpHeader.listview();
-                $tmpHeader.trigger("create");
+                //$tmpHeader.trigger("create");
                 cikisDegerGoster();
                 startTimer();
             });
