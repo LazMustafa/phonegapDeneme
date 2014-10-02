@@ -819,9 +819,9 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         function cihazEkleFn(objadi, objipAddr, objprtNo, objkullaniciAdi, objsifre) {
             if (utils.checkIPv4(objipAddr.val(), utils.ipRegex)) {
                 if ((utils.isNumber(objprtNo.val())) && ((objprtNo.val() > 0) && (objprtNo.val() < 65536))) {
-                    if (utils.isNumberChar(objadi, 20)) {
-                        if (utils.isNumberChar(objkullaniciAdi, 15)) {
-                            if (utils.isNumberChar(objsifre, 15)) {
+                    if (utils.isNumberChar(objadi.val(), 20)) {
+                        if (utils.isNumberChar(objkullaniciAdi.val(), 15)) {
+                            if (utils.isNumberChar(objsifre.val(), 15)) {
                                 utils.showLoader("Lütfen Bekleyin");
                                 modul.Cihazlar.Ekle(
                                     utils.GuidGen(),
@@ -868,9 +868,9 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         function cihazDuzeltFn(objid, objadi, objipAddr, objprtNo, objkullaniciAdi, objsifre) {
             if (utils.checkIPv4(objipAddr.val(), utils.ipRegex)) {
                 if ((utils.isNumber(objprtNo.val())) && ((objprtNo.val() > 0) && (objprtNo.val() < 65536))) {
-                    if (utils.isNumberChar(objadi, 20)) {
-                        if (utils.isNumberChar(objkullaniciAdi, 15)) {
-                            if (utils.isNumberChar(objsifre, 15)) {
+                    if (utils.isNumberChar(objadi.val(), 20)) {
+                        if (utils.isNumberChar(objkullaniciAdi.val(), 15)) {
+                            if (utils.isNumberChar(objsifre.val(), 15)) {
                                 utils.showLoader("Lütfen Bekleyin");
                                 modul.Cihazlar.Duzelt(
                                     objid,
