@@ -828,7 +828,7 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
                         objkullaniciAdi.val(),
                         objsifre.val()
                     );
-                    $.mobile.loading().fadeOut("fast", function () {showMsg("Ok", 1000); });
+                    $.mobile.loading().fadeOut("fast", function () {showMsg("Eklendi.", 1000); });
                 } else { utils.txtHighlight(objprtNo); }
             } else { utils.txtHighlight(objipAddr); }
         }
@@ -871,7 +871,7 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
                         objkullaniciAdi.val(),
                         objsifre.val()
                     );
-                    $.mobile.loading().fadeOut("fast", function () {showMsg("Ok", 1000); });
+                    $.mobile.loading().fadeOut("fast", function () {showMsg("Düzeltildi.", 1000); });
                 } else { utils.txtHighlight(objprtNo); }
             } else { utils.txtHighlight(objipAddr); }
         }
