@@ -819,16 +819,22 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         function cihazEkleFn(objadi, objipAddr, objprtNo, objkullaniciAdi, objsifre) {
             if (utils.checkIPv4(objipAddr.val(), utils.ipRegex)) {
                 if ((utils.isNumber(objprtNo.val())) && ((objprtNo.val() > 0) && (objprtNo.val() < 65536))) {
-                    utils.showLoader("Lütfen Bekleyin");
-                    modul.Cihazlar.Ekle(
-                        utils.GuidGen(),
-                        objadi.val(),
-                        objipAddr.val(),
-                        objprtNo.val(),
-                        objkullaniciAdi.val(),
-                        objsifre.val()
-                    );
-                    $.mobile.loading().fadeOut("fast", function () {showMsg("Eklendi.", 1000); });
+                    if (utils.isNumberChar(objadi, 20)) {
+                        if (utils.isNumberChar(objkullaniciAdi, 15)) {
+                            if (utils.isNumberChar(objsifre, 15)) {
+                                utils.showLoader("Lütfen Bekleyin");
+                                modul.Cihazlar.Ekle(
+                                    utils.GuidGen(),
+                                    objadi.val(),
+                                    objipAddr.val(),
+                                    objprtNo.val(),
+                                    objkullaniciAdi.val(),
+                                    objsifre.val()
+                                );
+                                $.mobile.loading().fadeOut("fast", function () {showMsg("Eklendi.", 1000); });
+                            } else { utils.txtHighlight(objsifre); }
+                        } else { utils.txtHighlight(objkullaniciAdi); }
+                    } else { utils.txtHighlight(objadi); }
                 } else { utils.txtHighlight(objprtNo); }
             } else { utils.txtHighlight(objipAddr); }
         }
@@ -862,16 +868,22 @@ window.cOtomasyon.UI = (function ($, modul, utils) {
         function cihazDuzeltFn(objid, objadi, objipAddr, objprtNo, objkullaniciAdi, objsifre) {
             if (utils.checkIPv4(objipAddr.val(), utils.ipRegex)) {
                 if ((utils.isNumber(objprtNo.val())) && ((objprtNo.val() > 0) && (objprtNo.val() < 65536))) {
-                    utils.showLoader("Lütfen Bekleyin");
-                    modul.Cihazlar.Duzelt(
-                        objid,
-                        objadi.val(),
-                        objipAddr.val(),
-                        objprtNo.val(),
-                        objkullaniciAdi.val(),
-                        objsifre.val()
-                    );
-                    $.mobile.loading().fadeOut("fast", function () {showMsg("Düzeltildi.", 1000); });
+                    if (utils.isNumberChar(objadi, 20)) {
+                        if (utils.isNumberChar(objkullaniciAdi, 15)) {
+                            if (utils.isNumberChar(objsifre, 15)) {
+                                utils.showLoader("Lütfen Bekleyin");
+                                modul.Cihazlar.Duzelt(
+                                    objid,
+                                    objadi.val(),
+                                    objipAddr.val(),
+                                    objprtNo.val(),
+                                    objkullaniciAdi.val(),
+                                    objsifre.val()
+                                );
+                                $.mobile.loading().fadeOut("fast", function () {showMsg("Düzeltildi.", 1000); });
+                            } else { utils.txtHighlight(objsifre); }
+                        } else { utils.txtHighlight(objkullaniciAdi); }
+                    } else { utils.txtHighlight(objadi); }
                 } else { utils.txtHighlight(objprtNo); }
             } else { utils.txtHighlight(objipAddr); }
         }
